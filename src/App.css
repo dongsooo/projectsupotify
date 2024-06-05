@@ -1,38 +1,323 @@
-.App {
-  text-align: center;
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+li {
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+img {
+  vertical-align: top;
+}
+
+body {
+  background-color: rgb(49, 49, 49);
+  overflow-y: scroll; /* 스크롤 기능 유지 */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@font-face {
+  font-family: "suite";
+  src: url("../font/SUITE-BOLD.OTF");
+
+  font-family: "suite-m";
+  src: url(../font/SUITE-MEDIUM.OTF);
+}
+
+/* index Header */
+.Header {
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgb(49, 49, 49);
+}
+
+.Header_wrap {
+  /* max-width: 360px; */
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.userIcon {
+  font-size: 1.5em;
+  display: block;
+  padding: 0.5em 0.7em;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Header_center_box {
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.Header_center_box > h1 {
+  font-family: "suite";
+
+  color: white;
+  text-align: center;
+  font-size: 1.7em;
+  padding: 0.3em 0;
+}
+
+.settingIcon {
+  font-size: 1.5em;
+  color: white;
+  padding: 0.5em 0.7em;
+}
+
+/* MainApp */
+.MainApp {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.MainApp.fade-in {
+  opacity: 1;
+}
+
+/* index MusicList */
+.MusicList {
+  width: 100%;
+  overflow-x: hidden;
+  margin-top: 2.5em;
+}
+
+.MusicList2,
+.MusicList3,
+.MusicList4 {
+  margin-top: 0.5em;
+}
+
+.MusicList4 {
+  margin-bottom: 6em;
+}
+
+.MusicList_wrap {
+  /* max-width: 360px; */
+
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.MusicListTiTle {
+  padding: 1em 0 0.5em 0;
+}
+
+.MusicListTiTle > h4 {
+  color: white;
+}
+
+.MusicAlbumList {
+  display: flex;
+  flex-direction: row;
+  /* width: min-content; */
+  /* max-width: 430px; */
+  overflow-x: scroll;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding-bottom: 2em; /* 추가 패딩 */
+}
+
+.MusicAlbumList::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.MusicAlbumList > li {
+  width: 30%;
+  /* height: 130px; */
+  margin-left: 0.5em;
+  background-color: tomato;
+  flex: none;
+  position: relative;
+}
+
+.box {
+  position: relative;
+  width: 50%;
+  background-color: skyblue;
+}
+.box::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.MusicAlbumList > li:first-child {
+  margin-left: 0;
+}
+
+/* .MusicAlbumList > li:last-child {
+  margin-right: 1em;
+} */
+
+.MusicAlbumList > li > p {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  bottom: -6%;
+  color: white;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+/* Footer */
+
+.Footer {
+  background-color: rgb(49, 49, 49);
+
+  position: fixed;
+  z-index: 5;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+}
+
+.FooterWrap {
+  /* max-width: 360px; */
+  margin: 0 auto;
+  display: flex;
+  height: 100%;
+}
+
+.homeIcon,
+.searchIcon,
+.folderIcon,
+.premiumIcon {
+  font-size: 1em;
+  display: block;
+  padding: 0.5em 0.7em;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.FooterIconBox {
+  width: 25%;
+  display: flex;
+
+  position: relative;
+}
+
+.iconText {
+  width: 100%;
+
+  text-align: center;
+  font-size: 0.5em;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+}
+
+/* Intro */
+.Intro {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.intro.fade-out {
+  opacity: 0;
+}
+
+.IntroWrap {
+  margin: 0 auto;
+  width: 360px;
+  height: 740px;
+  background-image: url(../public/img/00_intro_img.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.supotifyLogoBox {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.supotifyLogoBox > img {
+  width: 55px;
+  height: 55px;
+}
+
+.supotifyTextBox {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.supotifyTextBox > p {
+  font-family: "suite-m";
+  font-size: 3.5em;
+  color: #f2cae9;
+}
+
+@media all and (max-width: 420px) {
+  .MusicAlbumList > li > p {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: -25%;
+    color: white;
+    font-size: 0.4em;
+    line-height: 1.5em;
   }
-  to {
-    transform: rotate(360deg);
+
+  .userIcon {
+    font-size: 1.5em;
+    display: block;
+    padding: 0.5em 0.7em;
+    color: white;
+  }
+
+  .Header_center_box > h1 {
+    font-family: "suite";
+
+    color: white;
+    text-align: center;
+    font-size: 1.7em;
+    padding: 0.3em 0;
+  }
+
+  .settingIcon {
+    font-size: 1.5em;
+    color: white;
+    padding: 0.5em 0.7em;
   }
 }
