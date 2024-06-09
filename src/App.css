@@ -179,7 +179,7 @@ body {
   margin-right: 1em;
 } */
 
-.MusicAlbumList > li > p {
+.MusicAlbumList > li p {
   position: absolute;
   width: 100%;
   height: 20px;
@@ -254,13 +254,16 @@ body {
 
 .IntroWrap {
   margin: 0 auto;
-  width: 360px;
-  height: 740px;
+  /* width: 360px; */
+  /* height: 740px; */
+  width: 100%;
+  height: 100vh;
   background-image: url(../public/img/00_intro_img.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  z-index: 10;
 }
 
 .supotifyLogoBox {
@@ -289,7 +292,7 @@ body {
 }
 
 @media all and (max-width: 420px) {
-  .MusicAlbumList > li > p {
+  .MusicAlbumList > li p {
     position: absolute;
     width: 100%;
     height: 20px;
@@ -320,4 +323,362 @@ body {
     color: white;
     padding: 0.5em 0.7em;
   }
+
+  #playCont {
+    overflow: hidden;
+  }
+}
+
+/* search */
+.Search {
+  width: 100%;
+  padding-bottom: 4em;
+}
+
+.SearchWrap {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.SearchHeaderBox {
+  padding: 1em;
+}
+
+.SearchIconBox {
+  position: relative;
+  width: 50px;
+  background-color: skyblue;
+  border-radius: 50%;
+}
+.SearchIconBox::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
+}
+
+.SearchIconText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  font-family: "suite";
+  color: white;
+}
+
+.SearchTitleBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.5em;
+}
+
+.SearchTitleBox > p {
+  font-family: "suite";
+  color: white;
+  font-size: 1.5em;
+}
+
+.SearchHeaderBox {
+  display: flex;
+}
+
+.SearchTopBox {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+}
+
+.SearchBar {
+  width: 100%;
+  height: 50px;
+  outline: none;
+  box-sizing: border-box;
+
+  font-size: 1em;
+}
+
+.SearchBtn {
+  width: 10%;
+}
+
+.SearchBar:focus {
+  border: none;
+}
+
+.SearchBottomBox {
+  padding: 2em 1em;
+  width: 100%;
+  margin: 0 auto; /* 가운데 정렬 */
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2열로 설정 */
+  grid-template-rows: repeat(4, auto); /* 4행으로 설정, 높이는 자동 */
+  gap: 10px; /* 그리드 항목 사이의 간격을 설정 */
+}
+
+.grid-container li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.grid-container img {
+  max-width: 100%;
+
+  height: auto; /* 이미지가 li 크기에 맞게 조정되도록 설정 */
+}
+
+.grid-container li p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* MusicPlayer */
+.MusicPlayer {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-bottom: 6em;
+  overflow-x: hidden;
+  background-color: rgb(49, 49, 49);
+  z-index: 5;
+}
+
+.MusicPlayer.mini {
+  display: none;
+}
+
+.MusicPlayerIconBox {
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.MusicTopIcon {
+  color: white;
+}
+
+.MusicPlayerImgBox {
+  padding: 1em;
+  /* width: 40%; */
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.MusicPlayerImgBox img {
+  width: 100%;
+}
+
+.MusicPlayerTitleBox {
+  /* width: 40%; */
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em;
+  font-family: "suite";
+  box-sizing: border-box;
+}
+
+.MusicPlayerTilte {
+  font-size: 1.4em;
+  color: white;
+}
+
+.MusicPlayerSinger {
+  font-size: 0.5em;
+  color: rgb(121, 121, 121);
+}
+
+.MusicPlayerLikeBox {
+  /* width: 40%; */
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  padding-left: 0.5em;
+  font-size: 2em;
+  display: flex;
+
+  align-items: center;
+}
+
+.MusicPlayerLikeIcon {
+  margin-right: 0.2em;
+  color: white;
+}
+
+.MusicPlayerLikeIcon.like {
+  color: red;
+}
+.MusicPlayerComentIcon {
+  color: white;
+}
+
+.likeNums {
+  font-size: 0.7em;
+  color: white;
+  margin-right: 1em;
+}
+
+.MusicPlayerControlBox {
+  /* width: 40%; */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.MusicPlayerLine {
+  width: 90%;
+  height: 3px;
+  background-color: rgb(148, 148, 148);
+  margin: 0 auto;
+  margin-top: 2em;
+  position: relative;
+}
+
+.MusicPlayerBtnBox {
+  width: 5%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+}
+.MusicPlayerBtnBox::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
+}
+
+.MusicPlayerBottomBox {
+  display: flex;
+  font-size: 2em;
+  gap: 1.5em;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+  padding-bottom: 6em;
+  color: white;
+  /* background-color: red; */
+  width: 100%;
+}
+
+.playBtn {
+  font-size: 1.7em;
+  display: block;
+}
+
+.MusicPlayerMini {
+  width: 100%;
+
+  position: fixed;
+  top: 0%;
+  z-index: 5;
+  display: flex;
+  border-bottom: 1px solid rgb(152, 152, 152);
+  background-color: rgb(49, 49, 49);
+  display: none;
+}
+
+.MusicPlayerMini.large {
+  display: block;
+}
+
+.MusicPlayerMiniIconBox {
+  padding: 0.5em 1em;
+  color: white;
+
+  display: flex;
+  flex-shrink: 2;
+}
+
+.MusicPlayerMiniContBox {
+  display: flex;
+
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2em;
+  color: white;
+
+  flex-grow: 1;
+}
+
+/* Side Menu */
+.SideMenu {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.SideMenuBg {
+  width: 70%;
+  height: 100vh;
+  background-color: rgb(49, 49, 49);
+}
+
+.SideMenuIconBox {
+  width: 100%;
+  padding: 1em;
+}
+
+.SideMenuIcon {
+  position: relative;
+  width: 10%;
+  background-color: skyblue;
+  border-radius: 50%;
+}
+
+.SideMenuIcon::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
+}
+.SideMenuIcon > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.SideMenuName {
+  padding-top: 1em;
+}
+
+.SideMenuName > p {
+  font-family: "suite";
+  color: white;
+  font-size: 1.3em;
+  margin-top: 0.2em;
+}
+
+.SideMenuBox {
+  padding-left: 1em;
+  padding-top: 3em;
+}
+
+.SideMenuBox li {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  padding: 0.5em 0;
 }
