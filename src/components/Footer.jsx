@@ -32,8 +32,10 @@ const Footer = () => {
           </div>
 
           <div className="FooterIconBox3 FooterIconBox">
-            <FontAwesomeIcon icon={faFolderOpen} className="folderIcon" />
-            <p className="iconText librayIconText">내 라이브러리</p>
+            <Link to="/Library">
+              <FontAwesomeIcon icon={faFolderOpen} className="folderIcon" />
+              <p className="iconText librayIconText">내 라이브러리</p>
+            </Link>
           </div>
           <div className="FooterIconBox4 FooterIconBox">
             <FontAwesomeIcon icon={faHeadphones} className="premiumIcon" />
@@ -41,10 +43,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-
-      <Routes>
-        <Route path="/Search" element={<Search />} />
-      </Routes>
     </>
   );
 };

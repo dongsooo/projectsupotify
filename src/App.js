@@ -7,7 +7,8 @@ import { Route, Router, Routes } from "react-router-dom";
 import MusicList1 from "./components/MusicList1";
 import MusicPlayer from "./components/MusicPlayer";
 import MusicPlayerMini from "./components/MusicPlayerMini";
-import SideMenu from "./components/SideMenu";
+import Library from "./components/ Library";
+import Premium from "./components/Premium";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -29,6 +30,8 @@ function App() {
       <div className="App">
         {/* <Routes>
           <Route path="/MusicPlayer" element={<MusicPlayer />} />
+          <Route path="/Search" element={<Search />} />
+          <Route path="/Library" element={<Library />} />
         </Routes> */}
 
         {/* {showIntro ? (
@@ -39,7 +42,7 @@ function App() {
 
         {/* <MainApp /> */}
         {/* <MusicPlayerMini /> */}
-        <SideMenu />
+        <Premium />
       </div>
     </>
   );
