@@ -13,7 +13,7 @@ const MainApp = () => {
     <section className="MainApp">
       <Routes>
         <Route
-          path="/"
+          path="/projectsupotify"
           element={
             <>
               <Header />

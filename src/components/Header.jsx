@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faGears, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [user, setUser] = useState("SideMenu");
@@ -26,7 +27,9 @@ const Header = () => {
             <h1>Supotify</h1>
           </div>
           <div className="Header_left_box">
-            <FontAwesomeIcon icon={faGears} className="settingIcon" />
+            <Link to="/Settings">
+              <FontAwesomeIcon icon={faGears} className="settingIcon" />
+            </Link>
           </div>
         </div>
       </div>
@@ -45,7 +48,9 @@ const Header = () => {
           </div>
           <div className="SideMenuBox">
             <ul>
-              <li>내 라이브러리</li>
+              <li>
+                <Link to="/Library">내 라이브러리</Link>
+              </li>
               <li>기록</li>
             </ul>
           </div>

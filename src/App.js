@@ -7,8 +7,13 @@ import { Route, Router, Routes } from "react-router-dom";
 import MusicList1 from "./components/MusicList1";
 import MusicPlayer from "./components/MusicPlayer";
 import MusicPlayerMini from "./components/MusicPlayerMini";
-import Library from "./components/ Library";
+import Library from "./components/Library";
 import Premium from "./components/Premium";
+import Settings from "./components/Settings";
+import SearchList from "./components/SearchList";
+import Coment from "./components/Coment";
+import MusicPlayer2 from "./components/MusicPlayer2";
+import MusicPlayer3 from "./components/MusicPlayer3";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -20,7 +25,7 @@ function App() {
       setTimeout(() => {
         setShowIntro(false);
       }, 500);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -28,21 +33,25 @@ function App() {
   return (
     <>
       <div className="App">
-        {/* <Routes>
+        <Routes>
+          <Route path="/MusicPlayer3" element={<MusicPlayer3 />} />
+          <Route path="/MusicPlayer2" element={<MusicPlayer2 />} />
+          <Route path="/Coment" element={<Coment />} />
           <Route path="/MusicPlayer" element={<MusicPlayer />} />
           <Route path="/Search" element={<Search />} />
           <Route path="/Library" element={<Library />} />
-        </Routes> */}
+          <Route path="/Premium" element={<Premium />} />
+          <Route path="/Settings" element={<Settings />} />
+          <Route path="/SearchList" element={<SearchList />} />
+        </Routes>
 
-        {/* {showIntro ? (
+        {showIntro ? (
           <Intro className={transition ? "fade-out" : ""} />
         ) : (
           <MainApp className={transition ? "fade-in" : ""} />
-        )} */}
+        )}
 
-        {/* <MainApp /> */}
-        {/* <MusicPlayerMini /> */}
-        <Premium />
+        {/* <Coment /> */}
       </div>
     </>
   );

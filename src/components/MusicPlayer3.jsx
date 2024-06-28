@@ -17,8 +17,10 @@ import MusicList4 from "./MusicList4";
 import MusicPlayerMini from "./MusicPlayerMini";
 
 import { Link } from "react-router-dom";
+import Library from "./Library";
+import SearchList from "./SearchList";
 
-const MusicPlayer = () => {
+const MusicPlayer3 = () => {
   const [isMini, setIsMini] = useState("MusicPlayer");
   const [isLarge, setIsLarge] = useState("MusicPlayerMini");
   const [likeNums, setLikeNums] = useState(123);
@@ -87,7 +89,7 @@ const MusicPlayer = () => {
 
   return (
     <>
-      <div id="playCont" className={isMini}>
+      <div id="MusicPlayer3" className={isMini}>
         <div className="MusicPlayerIconBox">
           <FontAwesomeIcon
             icon={faChevronDown}
@@ -192,12 +194,9 @@ const MusicPlayer = () => {
       </div>
 
       {/* <MusicPlayerMini /> */}
-      <MusicList1 />
-      <MusicLIst2 />
-      <MusicList3 />
-      <MusicList4 />
+      <SearchList />
     </>
   );
 };
 
-export default MusicPlayer;
+export default MusicPlayer3;

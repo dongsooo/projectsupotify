@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { libraryList as initialLibraryList } from "../server/librayList"; // 초기 리스트를 가져옵니다.
 import { libraryList } from "../server/librayList";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
+import MusicPlayer2 from "./MusicPlayer2";
 
 const Library = () => {
   const [libraryList, setLibraryList] = useState(initialLibraryList); // 상태로 리스트를 관리합니다.
@@ -27,7 +29,9 @@ const Library = () => {
                   <p>{data.musicSInger}</p>
                 </div>
                 <div className="LibraryiconBox">
-                  <FontAwesomeIcon icon={faPlay} className="LibrayPlayIcon" />
+                  <Link to="/MusicPlayer2">
+                    <FontAwesomeIcon icon={faPlay} className="LibrayPlayIcon" />
+                  </Link>
                   <FontAwesomeIcon
                     icon={faTrash}
                     className="LibrayTrachIcon"

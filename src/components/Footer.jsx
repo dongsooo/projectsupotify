@@ -15,7 +15,7 @@ const Footer = () => {
       <footer className="Footer">
         <div className="FooterWrap">
           <div className="FooterIconBox1 FooterIconBox">
-            <Link to="/">
+            <Link to="/projectsupotify">
               <FontAwesomeIcon icon={faHouse} className="homeIcon" />
               <p className="iconText homeIconText">홈</p>
             </Link>
@@ -38,8 +38,10 @@ const Footer = () => {
             </Link>
           </div>
           <div className="FooterIconBox4 FooterIconBox">
-            <FontAwesomeIcon icon={faHeadphones} className="premiumIcon" />
-            <p className="iconText premiumIconText">프리미엄</p>
+            <Link to="/Premium">
+              <FontAwesomeIcon icon={faHeadphones} className="premiumIcon" />
+              <p className="iconText premiumIconText">프리미엄</p>
+            </Link>
           </div>
         </div>
       </footer>

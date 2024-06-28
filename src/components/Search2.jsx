@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import { searchList1 } from "../server/searchList1";
 import { Link } from "react-router-dom";
 
-const Search = () => {
+const Search2 = () => {
   return (
     <div className="Search">
       <div className="SearchWrap">
@@ -44,4 +44,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Search2;

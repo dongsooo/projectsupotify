@@ -21,6 +21,7 @@ const MusicPlayerMini = () => {
           }}
         />
       </div>
+
       <div className="MusicPlayerMiniContBox">
         <div className="MusicPlayerMiniPrevBtn">
           <FontAwesomeIcon icon={faBackwardStep} className="miniPrevBtn" />

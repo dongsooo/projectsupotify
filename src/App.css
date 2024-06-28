@@ -20,16 +20,22 @@ img {
 
 body {
   background-color: rgb(49, 49, 49);
-  overflow-y: scroll; /* 스크롤 기능 유지 */
 }
 
-body::-webkit-scrollbar {
+.App {
+  height: 100vh;
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+  scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+}
+
+/* Webkit 브라우저 (Chrome, Safari)에서 스크롤바 숨기기 */
+.App::-webkit-scrollbar {
   display: none;
 }
 
-body {
-  -ms-overflow-style: none; /* IE, Edge */
-  scrollbar-width: none; /* Firefox */
+/* Internet Explorer와 Edge에서 스크롤바 숨기기 */
+.App {
+  -ms-overflow-style: none; /* IE와 Edge */
 }
 
 @font-face {
@@ -111,7 +117,7 @@ body {
 }
 
 .MusicList4 {
-  margin-bottom: 6em;
+  margin-bottom: 12em;
 }
 
 .MusicList_wrap {
@@ -132,13 +138,13 @@ body {
 .MusicAlbumList {
   display: flex;
   flex-direction: row;
-  /* width: min-content; */
-  /* max-width: 430px; */
-  overflow-x: scroll;
 
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  padding-bottom: 2em; /* 추가 패딩 */
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 2em;
+  cursor: pointer;
 }
 
 .MusicAlbumList::-webkit-scrollbar {
@@ -147,7 +153,7 @@ body {
 
 .MusicAlbumList > li {
   width: 30%;
-  /* height: 130px; */
+
   margin-left: 0.5em;
   background-color: tomato;
   flex: none;
@@ -247,11 +253,37 @@ body {
 .Intro {
   width: 100%;
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 .intro.fade-out {
   opacity: 0;
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .IntroWrap {
@@ -260,7 +292,7 @@ body {
   /* height: 740px; */
   width: 100%;
   height: 100vh;
-  background-image: url(../public/img/00_intro_img.jpg);
+  background-image: url(https://dongsooo.github.io/imgs/img/00_intro_img.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -293,42 +325,15 @@ body {
   color: #f2cae9;
 }
 
-@media all and (max-width: 420px) {
-  .MusicAlbumList > li p {
-    position: absolute;
-    width: 100%;
-    height: 20px;
-    bottom: -25%;
-    color: white;
-    font-size: 0.4em;
-    line-height: 1.5em;
-  }
+.supotifyLogoBox,
+.supotifyTextBox {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
 
-  .userIcon {
-    font-size: 1.5em;
-    display: block;
-    padding: 0.5em 0.7em;
-    color: white;
-  }
-
-  .Header_center_box > h1 {
-    font-family: "suite";
-
-    color: white;
-    text-align: center;
-    font-size: 1.7em;
-    padding: 0.3em 0;
-  }
-
-  .settingIcon {
-    font-size: 1.5em;
-    color: white;
-    padding: 0.5em 0.7em;
-  }
-
-  #playCont {
-    overflow: hidden;
-  }
+.supotifyLogoBox.visible,
+.supotifyTextBox.visible {
+  opacity: 1;
 }
 
 /* search */
@@ -417,6 +422,7 @@ body {
   margin: 0 auto; /* 가운데 정렬 */
   overflow-x: hidden;
   box-sizing: border-box;
+  margin-bottom: 6em;
 }
 
 .grid-container {
@@ -450,15 +456,22 @@ body {
 }
 
 /* MusicPlayer */
+#MusicPlayer2,
+#MusicPlayer3 {
+  padding-bottom: 36em;
+}
+
 .MusicPlayer {
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  padding-bottom: 6em;
-  overflow-x: hidden;
+  /* padding-bottom: 6em; */
+  overflow: hidden;
   background-color: rgb(49, 49, 49);
   z-index: 5;
+
+  /* background-color: red; */
 }
 
 .MusicPlayer.mini {
@@ -468,16 +481,18 @@ body {
 .MusicPlayerIconBox {
   padding: 1em;
   box-sizing: border-box;
+  width: 360px;
+  margin: 0 auto;
+  background-color: rgb(35, 35, 35);
 }
 
 .MusicTopIcon {
   color: white;
+  cursor: pointer;
 }
 
 .MusicPlayerImgBox {
-  padding: 1em;
-  /* width: 40%; */
-  width: 100%;
+  width: 360px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -488,11 +503,21 @@ body {
 
 .MusicPlayerTitleBox {
   /* width: 40%; */
-  width: 100%;
+  width: 360px;
   margin: 0 auto;
-  padding: 1em;
+  /* padding: 2em; */
+  padding-top: 0.5em;
   font-family: "suite";
   box-sizing: border-box;
+  background-color: rgb(35, 35, 35);
+}
+
+.MusicPlayerTitleBox > p {
+  margin-left: 0.5em;
+}
+
+.MusicPlayerTitleBox > p:last-child {
+  margin-left: 0.7em;
 }
 
 .MusicPlayerTilte {
@@ -501,27 +526,27 @@ body {
 }
 
 .MusicPlayerSinger {
-  font-size: 0.5em;
+  font-size: 1em;
   color: rgb(121, 121, 121);
 }
 
 .MusicPlayerLikeBox {
   /* width: 40%; */
-  width: 100%;
+  width: 360px;
   margin: 0 auto;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  display: flex;
-  padding-left: 0.5em;
-  font-size: 2em;
-  display: flex;
 
+  display: flex;
+  padding-top: 2em;
+  font-size: 1.5em;
+  display: flex;
+  background-color: rgb(35, 35, 35);
   align-items: center;
 }
 
 .MusicPlayerLikeIcon {
-  margin-right: 0.2em;
+  margin-left: 0.5em;
   color: white;
+  cursor: pointer;
 }
 
 .MusicPlayerLikeIcon.like {
@@ -529,31 +554,48 @@ body {
 }
 .MusicPlayerComentIcon {
   color: white;
+  cursor: pointer;
+  margin-left: 0.5em;
+
+  font-size: 0.9em;
 }
 
 .likeNums {
   font-size: 0.7em;
   color: white;
-  margin-right: 1em;
+  margin-left: 0.3em;
 }
 
 .MusicPlayerControlBox {
-  /* width: 40%; */
-  width: 100%;
+  width: 360px;
   margin: 0 auto;
+  background-color: rgb(35, 35, 35);
+
+  position: relative;
+  padding-top: 1em;
+  padding-bottom: 0em;
+  /* background-color: red; */
+}
+
+.MusicPlayerLineBox {
+  width: 100%;
+
+  height: 50px;
 }
 
 .MusicPlayerLine {
   width: 90%;
   height: 3px;
   background-color: rgb(148, 148, 148);
-  margin: 0 auto;
-  margin-top: 2em;
-  position: relative;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .MusicPlayerBtnBox {
-  width: 5%;
+  width: 2%;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
   position: absolute;
@@ -573,14 +615,24 @@ body {
   gap: 1.5em;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5em;
-  padding-bottom: 6em;
+  margin: 0 auto;
+
+  padding-bottom: 10em;
+
   color: white;
+  background-color: rgb(35, 35, 35);
   /* background-color: red; */
-  width: 100%;
+  width: 360px;
 }
 
-.playBtn {
+/* .MusicPlayerPrevBtn,
+.MusicPlayerPlayBtn,
+.MusicPlayerNextBtn {
+  padding: 3em 0;
+} */
+
+.playBtn,
+.stopBtn {
   font-size: 1.7em;
   display: block;
 }
@@ -589,16 +641,49 @@ body {
   width: 100%;
 
   position: fixed;
-  top: 0%;
+  bottom: 80px;
   z-index: 5;
   display: flex;
-  border-bottom: 1px solid rgb(152, 152, 152);
+  border-top: 1px solid rgb(152, 152, 152);
+  /* border-bottom: 1px solid rgb(152, 152, 152); */
+
   background-color: rgb(49, 49, 49);
+
   display: none;
 }
 
 .MusicPlayerMini.large {
   display: block;
+}
+
+.MusicPlayerMiniImgBox {
+  width: 80px;
+  height: 80px;
+  background-color: tomato;
+  background-image: url("https://dongsooo.github.io/imgs/img/01_section-01.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: 1em;
+}
+
+.MusicPlayerMiniTitleBox {
+  margin-left: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.MusicPlayerMiniTitleBox > p:first-child {
+  font-size: 1em;
+}
+.MusicPlayerMiniTitleBox > p:last-child {
+  font-size: 0.9em;
+  color: rgb(79, 79, 79);
+}
+
+.MusicPlayerMiniTitleBox > p {
+  color: white;
 }
 
 .MusicPlayerMiniIconBox {
@@ -660,7 +745,7 @@ body {
 
 .SideMenuIcon {
   position: relative;
-  width: 15%;
+  width: 65px;
   background-color: skyblue;
   border-radius: 50%;
 }
@@ -707,6 +792,7 @@ body {
 
 .Library {
   padding-bottom: 5em;
+  margin-bottom: 5em;
 }
 
 .Library > p {
@@ -715,12 +801,12 @@ body {
   color: white;
   padding: 1em;
   /* padding-bottom: 0; */
+
   background-color: rgb(49, 49, 49);
-  /* background-color: red; */
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 4;
 }
 
 .LibrayList {
@@ -779,17 +865,29 @@ body {
 
 .Premium {
   padding-bottom: 6em;
-  margin-top: 10em;
+  /* margin-top: 10em; */
   overflow: hidden;
-  background-color: red;
+  background-image: url(https://dongsooo.github.io/imgs/img/08_Premium_BG.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+.PremiumTitleBox {
+  margin-top: 2em;
+  margin-left: 1em;
+}
+
+.PremiumTitleBox > p {
+  font-family: "suite";
+  color: white;
+}
 .PremiumBox1TextBox {
   display: flex;
   justify-content: center;
 
   margin: 1em;
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 .PremiumBox1TextBox > p {
@@ -808,7 +906,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: url(../public/img/07_premium.Bg4.jpeg);
+  background-image: url(https://dongsooo.github.io/imgs/img/07_premium.Bg4.jpeg);
   background-position: center;
   background-size: cover;
 }
@@ -834,15 +932,31 @@ body {
 
 .PremiumTextBox1 > p {
   color: white;
-  font-size: 1.5em;
+
+  font-size: 1em;
   text-align: center;
   font-weight: bold;
   margin: 0.5em 0;
 }
 
+.PremiumTextBox1 > ul,
+.PremiumTextBox2 > ul,
+.PremiumTextBox3 > ul,
+.PremiumTextBox4 > ul {
+  margin: 0 auto;
+  width: fit-content;
+
+  text-align: start;
+  position: relative;
+}
+
 .PremiumTextBox1 > ul > li {
   list-style: inside;
   color: white;
+  font-size: 0.7em;
+  line-height: 1.5em;
+  position: relative;
+  left: 0;
 }
 
 .PremiumImgBox2 {
@@ -857,7 +971,7 @@ body {
   align-items: center;
   flex-direction: column;
   margin-top: 1em;
-  background-image: url(../public/img/07_premium.Bg2.jpeg);
+  background-image: url(https://dongsooo.github.io/imgs/img/07_premium.Bg2.jpeg);
   background-position: center;
   background-size: cover;
 }
@@ -873,7 +987,7 @@ body {
 
 .PremiumTextBox2 > p {
   color: white;
-  font-size: 1.5em;
+  font-size: 1em;
   text-align: center;
   font-weight: bold;
   margin: 0.5em 0;
@@ -882,6 +996,8 @@ body {
 .PremiumTextBox2 > ul > li {
   list-style: inside;
   color: white;
+  font-size: 0.7em;
+  line-height: 1.5em;
 }
 
 .PremiumImgBox3 {
@@ -896,7 +1012,8 @@ body {
   align-items: center;
   flex-direction: column;
   margin-top: 1em;
-  background-image: url(../public/img/07_premium.Bg5.jpeg);
+
+  background-image: url(https://dongsooo.github.io/imgs/img/07_premium.Bg5.jpeg);
   background-position: center;
   background-size: cover;
 }
@@ -912,7 +1029,7 @@ body {
 
 .PremiumTextBox3 > p {
   color: white;
-  font-size: 1.5em;
+  font-size: 1em;
   text-align: center;
   font-weight: bold;
   margin: 0.5em 0;
@@ -921,66 +1038,460 @@ body {
 .PremiumTextBox3 > ul > li {
   list-style: inside;
   color: white;
+  font-size: 0.7em;
+  line-height: 1.5em;
 }
 
-.PremiumSlide {
-  width: 100%;
-  overflow: hidden;
-}
-
-.PremiumSlide > ul {
+.SliderContent {
   display: flex;
-  overflow-x: auto;
-  padding: 0;
-  list-style: none;
-  margin: 0;
-
-  padding: 1em;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.PremiumSlide > ul::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+.BGWrap {
+  /* background-color: rgb(49, 49, 49); */
+
+  padding-top: 0.5em;
 }
 
-.PremiumSlide > ul > li {
-  width: 90%;
-  height: 30vw;
-  flex: none;
-  padding: 20px;
-  background: #f0f0f0;
-  margin-right: 3em;
-  white-space: nowrap;
+.Slider1,
+.Slider2,
+.Slider3,
+.Slider4 {
+  width: 100%;
+}
+
+.Slider1 > div {
+  display: flex;
+  background-color: tomato;
+  width: 100%;
+  height: 60vw;
   border-radius: 10px;
+  transform: scale(0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.PremiumSlideTextBox {
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* align-items: center; */
 }
 
-.PremiumSlide > ul > li:first-child {
-  background-color: tomato;
+.PremiumSlideTextBox > p {
+  color: white;
+
+  text-align: center;
+}
+.PremiumSlideTextBox > p:first-child {
+  font-size: 1em;
 }
 
-.PremiumSlide > ul > li:nth-child(2) {
+.PremiumSlideTextBox > p:last-child {
+  font-size: 0.8em;
+  margin: 0.5em 0;
+}
+
+.PremiumSlideImgBox1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+
+.PremiumSlideImgBox1 > img {
+  max-width: 40%;
+}
+
+.Slider2 > div {
+  display: flex;
   background-color: burlywood;
+  width: 100%;
+  height: 60vw;
+  border-radius: 10px;
+  transform: scale(0.9);
+  justify-content: center;
+  align-items: center;
 }
 
-.PremiumSlide > ul > li:nth-child(3) {
+.Slider3 > div {
+  display: flex;
   background-color: brown;
+  width: 100%;
+  height: 60vw;
+  border-radius: 10px;
+  transform: scale(0.9);
+  justify-content: center;
+  align-items: center;
 }
 
-.PremiumSlide > ul > li:last-child {
-  margin-right: 0;
+.Slider4 > div {
+  display: flex;
   background-color: salmon;
+  width: 100%;
+  height: 60vw;
+  border-radius: 10px;
+  transform: scale(0.9);
+  justify-content: center;
+  align-items: center;
 }
 
-.PremiumSlide p {
+/* Settings */
+
+.Settings {
+  background-color: rgb(49, 49, 49);
+}
+
+.SettingsHeader {
+  position: relative;
+  background-color: rgb(49, 49, 49);
+}
+
+.SettingsHeaderIcon {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+}
+
+.SettingsHeaderTitleBox {
+  padding: 1em 0.5em;
+}
+
+.SettingsHeaderTitleBox > p {
+  color: white;
+  text-align: center;
+}
+
+.SettingsProfBox {
+  padding: 1em;
+  display: flex;
+  position: relative;
+}
+
+.SettingsProfIconBox {
+  position: relative;
+  width: 65px;
+  border-radius: 50%;
+  background-color: skyblue;
+}
+.SettingsProfIconBox::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
+}
+
+.SettingsProfIconBox > p {
+  font-family: "suite";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.SettingsProfTextBox {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1em;
+}
+
+.SettingsProfTextBox > p:first-child {
+  color: white;
+  font-size: 1em;
+  font-family: "suite";
+}
+
+.SettingsProfTextBox > p:last-child {
+  color: rgb(153, 153, 153);
+  font-size: 0.7em;
+  margin-top: 0.4em;
+}
+
+.SettingsProfArrowBox {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+}
+
+.SettingsProfArrow {
+  color: white;
+}
+
+.SettingsList {
+  padding: 1em;
+}
+
+.SettingsList li {
+  display: flex;
+
+  position: relative;
+  margin: 1.5em 0;
+}
+
+.SettingsList p {
+  color: white;
+}
+
+.SettingsListIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  color: white;
+}
+
+.SettingsLogoutBox {
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 6em;
+  cursor: pointer;
+}
+
+.SettingsLogoutBox p {
+  color: black;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 0.8em 1.5em;
+}
+
+/* coment */
+
+.Coment {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  overflow-y: scroll;
+  /* background-color: red; */
+  height: calc(100vh - 10%);
+  z-index: 10;
+}
+
+.ComentHeader {
+  position: relative;
+  background-color: rgb(22, 22, 22);
+  /* background-color: orangered; */
+}
+
+.ComentTitleBox {
+  padding: 1em;
+}
+
+.ComentTitleBox > p {
   color: white;
   font-size: 1em;
 }
 
-.PremiumSlide p:last-child {
-  font-size: 0.8em;
-  margin-top: 0.5em;
+.ComentIconBox {
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+  right: 5%;
+  color: white;
+  cursor: pointer;
+}
+
+.ComentBtnBox {
+  display: flex;
+}
+
+.ComentBtn {
+  color: white;
+  padding: 0.5em 1em;
+  background-color: rgb(60, 60, 60);
+  border-radius: 10px;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+}
+
+.ComentRecBtn {
+  margin-left: 0.5em;
+}
+
+.ComentCautionBox {
+  color: white;
+  font-size: 0.7em;
+  text-align: center;
+  background-color: rgb(85, 85, 85);
+  padding: 1em 0;
+}
+
+.ComentCautionBox > p > span {
+  color: tomato;
+}
+
+.ComentUserIconBox {
+  position: relative;
+  width: 65px;
+  background-color: skyblue;
+  border-radius: 50%;
+}
+
+.ComentUserIconBox > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.ComentUserIconBox::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
+}
+
+.ComentBody {
+  padding: 1em;
+  position: relative;
+  /* height: 90%; */
+  margin-bottom: 10em;
+}
+
+.Coment {
+  height: 100vh;
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+  scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+}
+
+/* Webkit 브라우저 (Chrome, Safari)에서 스크롤바 숨기기 */
+.Coment::-webkit-scrollbar {
+  display: none;
+}
+
+/* Internet Explorer와 Edge에서 스크롤바 숨기기 */
+.Coment {
+  -ms-overflow-style: none; /* IE와 Edge */
+}
+
+.ComentBody li {
+  display: flex;
+  margin: 0.5em 0;
+  /* margin-bottom: 1em; */
+  position: relative;
+}
+
+.ComentBody li:first-child {
+  margin-top: 0.2em;
+}
+
+.ComentUserBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.ComentUserId {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 0.3em;
+}
+
+.ComentUserId > p {
+  color: rgb(109, 109, 109);
+  font-size: 0.7em;
+}
+
+.ComentUserId > p:last-child {
+  margin-left: 0.4em;
+}
+
+.ComentText {
+  padding-top: 0.5em;
+}
+
+.ComentText > p {
+  color: white;
+  font-size: 0.9em;
+}
+
+.ComentUserBox {
+  padding-left: 0.5em;
+}
+
+.ComentWriteBox {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(34, 34, 34);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1em;
+}
+
+.ComentWriteUserIcon {
+  position: relative;
+  width: 25px;
+  background-color: skyblue;
+  border-radius: 50%;
+  margin: 0.5em;
+}
+.ComentWriteUserIcon::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
+}
+
+.ComentWriteUserIcon > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.3em;
+}
+
+.ComentInput {
+  width: 90%;
+  outline: none;
+  margin-right: 0.5em;
+}
+/* 미디어쿼리 */
+
+@media all and (max-width: 420px) {
+  .MusicAlbumList > li p {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: -25%;
+    color: white;
+    font-size: 0.4em;
+    line-height: 1.5em;
+  }
+
+  .userIcon {
+    font-size: 1.5em;
+    display: block;
+    padding: 0.5em 0.7em;
+    color: white;
+  }
+
+  .Header_center_box > h1 {
+    font-family: "suite";
+
+    color: white;
+    text-align: center;
+    font-size: 1.7em;
+    padding: 0.3em 0;
+  }
+
+  .settingIcon {
+    font-size: 1.5em;
+    color: white;
+    padding: 0.5em 0.7em;
+  }
 }
