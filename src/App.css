@@ -1333,7 +1333,7 @@ body {
 
 .ComentUserIconBox {
   position: relative;
-  width: 65px;
+  width: 50px;
   background-color: skyblue;
   border-radius: 50%;
 }
@@ -1344,6 +1344,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  font-size: 0.9em;
 }
 
 .ComentUserIconBox::after {
@@ -1357,6 +1358,7 @@ body {
   position: relative;
   /* height: 90%; */
   margin-bottom: 16em;
+  /* background-color: red; */
 }
 
 .Coment {
@@ -1409,9 +1411,9 @@ body {
   margin-left: 0.4em;
 }
 
-.ComentText {
-  padding-top: 0.5em;
-}
+/* .ComentText {
+  padding-top: 0.1em;
+} */
 
 .ComentText > p {
   color: white;
