@@ -24,7 +24,7 @@ const Header = () => {
             />
           </div>
           <div className="Header_center_box">
-            <h1>Supotify</h1>
+            <h1>Supotify 테스트</h1>
           </div>
           <div className="Header_left_box">
             <Link to="/Settings">
