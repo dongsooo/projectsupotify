@@ -88,6 +88,7 @@ const Coment = () => {
             value={newComment}
             onChange={handleCommentChange}
             onKeyDown={handleKeyDown}
+            style={{ touchAction: "manipulation" }}
           />
         </div>
       </div>
