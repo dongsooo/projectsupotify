@@ -1460,6 +1460,22 @@ body {
   outline: none;
   margin-right: 0.5em;
 }
+
+html {
+  touch-action: manipulation; /* 모바일에서 터치 액션에 대한 최적화 */
+  -ms-touch-action: manipulation; /* IE 및 Edge에서도 동작하도록 */
+  font-size: 100%; /* 기본 글꼴 크기 설정 */
+  zoom: reset; /* 기본 줌 설정을 리셋 */
+}
+
+@media (max-width: 320px) {
+  /* 화면의 최대 폭이 320px이 되도록 설정 */
+  html {
+    font-size: 12px; /* 텍스트 크기 설정 */
+    zoom: 100%; /* 화면을 100%로 확대 */
+  }
+}
+
 /* 미디어쿼리 */
 
 @media all and (max-width: 420px) {
